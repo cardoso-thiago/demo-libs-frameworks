@@ -1,0 +1,68 @@
+plugins {
+    id("org.jetbrains.kotlin.jvm") version "1.4.32"
+    id("org.jetbrains.kotlin.kapt") version "1.4.32"
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.4.32"
+    id 'java-library'
+    id 'maven-publish'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+}
+
+version = "0.0.1"
+group = "br.com.cardoso"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.micronaut:micronaut-bom:2.5.5'
+    }
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
+    implementation("javax.annotation:javax.annotation-api")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    kapt "io.micronaut:micronaut-inject-java"
+    kapt platform("io.micronaut:micronaut-bom:2.5.5")
+    implementation "io.micronaut:micronaut-inject"
+
+    api("br.com.cardoso:spring-lib:0.0.1") {
+        exclude group: 'org.springframework.boot'
+        exclude group: 'org.springframework'
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+}
+
+tasks {
+    compileKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
+    compileTestKotlin {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'br.com.cardoso'
+            artifactId = 'micronaut-lib'
+            version = '0.0.1'
+
+            from components.java
+        }
+    }
+}

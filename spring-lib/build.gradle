@@ -1,0 +1,31 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'br.com.cardoso'
+version '0.0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "org.springframework:spring-context-support:5.3.8"
+    compile "org.springframework.boot:spring-boot-autoconfigure:2.5.1"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'br.com.cardoso'
+            artifactId = 'spring-lib'
+            version = '0.0.1'
+
+            from components.java
+        }
+    }
+}

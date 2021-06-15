@@ -1,0 +1,5 @@
+= Demo para Utilização Compartilhada de Implementação entre Frameworks
+
+O objetivo desse projeto é demonstrar o uso de uma mesma implementação entre Spring, Micronaut e Quarkus. A implementação base foi realizada no projeto `spring-lib`. O projeto foi então gerado como dependência para utilização no projeto `spring-project-demo`.
+
+A mesma dependência foi utilizada nos projetos `micronaut-lib` e `quarkus-lib`. Nesses projetos, a implementação da `spring-lib` foi utilizada e os projetos em si apenas fazem o processo de carregamento do bean com a implementação. A lib do Micronaut e a extensão do Quarkus foram utilizadas nos projetos `micronaut-project-demo` e `quarkus-project-demo` respectivamente, demonstrando na inicialização o uso da implementação que foi realizada originalmente na `spring-lib`.

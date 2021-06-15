@@ -1,0 +1,1 @@
+/home/cardoso/Documentos/Profissional/POC/demo-libs-frameworks/spring-lib/build/classes/kotlin/main/br/com/cardoso/configuration/SpringLibConfiguration.class:/home/cardoso/Documentos/Profissional/POC/demo-libs-frameworks/spring-lib/build/classes/kotlin/main/br/com/cardoso/impl/ConvertMessage.class
